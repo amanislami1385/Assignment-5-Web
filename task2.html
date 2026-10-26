@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board | Task 2</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="task2.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <p class="eyebrow">TASK 2 · ARRAYS, LOOPS, FUNCTIONS AND DOM</p>
+            <h1>Kanban Board</h1>
+            <p>Organize work in three columns. The In Progress column can contain no more than three tasks.</p>
+            <nav class="top-nav">
+                <a href="index.html">← All tasks</a>
+                <a href="task1.html">Task 1</a>
+                <a href="task3.html">Task 3 →</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="panel">
+            <h2>Add a task</h2>
+
+            <form id="task-form" class="form-grid">
+                <div class="field">
+                    <label for="task-title">Task title</label>
+                    <input
+                        id="task-title"
+                        name="title"
+                        type="text"
+                        maxlength="70"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="task-tag">Tag</label>
+                    <select id="task-tag" name="tag" required>
+                        <option value="Study">Study</option>
+                        <option value="Coding">Coding</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Research">Research</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="task-priority">Priority</label>
+                    <select id="task-priority" name="priority" required>
+                        <option value="high">High</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="task-status">Column</label>
+                    <select id="task-status" name="status" required>
+                        <option value="todo">To do</option>
+                        <option value="progress">In progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+
+                <div class="field full">
+                    <button type="submit">Add task</button>
+                </div>
+            </form>
+
+            <p id="board-message" class="status" role="status" aria-live="polite">
+                Ready to organize your tasks.
+            </p>
+        </section>
+
+        <section class="panel secondary-panel">
+            <h2>Find and sort tasks</h2>
+
+            <div class="toolbar">
+                <label for="search">
+                    Search
+                    <input id="search" type="search" placeholder="Search task titles">
+                </label>
+
+                <label for="filter-tag">
+                    Filter by tag
+                    <select id="filter-tag">
+                        <option value="all">All tags</option>
+                        <option value="Study">Study</option>
+                        <option value="Coding">Coding</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Research">Research</option>
+                    </select>
+                </label>
+
+                <label for="sort-priority">
+                    Sort
+                    <select id="sort-priority">
+                        <option value="default">Default order</option>
+                        <option value="priority">Priority: high to low</option>
+                    </select>
+                </label>
+            </div>
+
+            <p>
+                Finished tasks:
+                <strong id="progress-label">0 / 10 (0%)</strong>
+            </p>
+
+            <progress
+                class="progress-native"
+                id="progress-track"
+                aria-label="Task completion"
+                max="100"
+                value="0"
+            ></progress>
+        </section>
+
+        <section id="board" class="board" aria-label="Kanban columns">
+            <div id="todo-column" class="board-column"></div>
+            <div id="progress-column" class="board-column"></div>
+            <div id="done-column" class="board-column"></div>
+        </section>
+    </main>
+
+    <footer class="container footer">Kanban Board · Task 2</footer>
+</body>
+</html>

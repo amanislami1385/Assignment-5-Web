@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creator | Task 3</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="task3.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <p class="eyebrow">TASK 3 · FORM EVENTS AND LIVE VALIDATION</p>
+            <h1>Character Creator</h1>
+            <p>Create a fantasy character using exactly 20 skill points.</p>
+            <nav class="top-nav">
+                <a href="index.html">← All tasks</a>
+                <a href="task2.html">← Task 2</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container layout-two">
+        <section class="panel">
+            <h2>Character details</h2>
+
+            <div
+                id="error-summary"
+                class="error-summary"
+                role="alert"
+                tabindex="-1"
+            ></div>
+
+            <form id="character-form">
+                <div class="form-grid">
+                    <div class="field full">
+                        <label for="character-name">Character name</label>
+                        <input
+                            id="character-name"
+                            name="name"
+                            type="text"
+                            required
+                            minlength="3"
+                            maxlength="18"
+                            autocomplete="off"
+                            aria-describedby="name-error"
+                        >
+                        <span id="name-error" class="error-message"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="character-class">Class</label>
+                        <select
+                            id="character-class"
+                            name="class"
+                            required
+                            aria-describedby="class-error"
+                        >
+                            <option value="">Choose a class</option>
+                            <option value="Warrior">Warrior</option>
+                            <option value="Mage">Mage</option>
+                            <option value="Ranger">Ranger</option>
+                        </select>
+                        <span id="class-error" class="error-message"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="character-color">Character color</label>
+                        <select id="character-color" name="color" required>
+                            <option value="purple">Purple</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="red">Red</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h3>Skill points</h3>
+                <p class="field-help">
+                    Each skill must be a whole number from 1 to 10.
+                    All four skills must total exactly 20 points.
+                </p>
+
+                <div class="skills-grid">
+                    <div class="field">
+                        <label for="strength">
+                            Strength
+                            <span id="strength-value" class="skill-value">5</span>
+                        </label>
+                        <input
+                            id="strength"
+                            name="strength"
+                            type="number"
+                            min="1"
+                            max="10"
+                            step="1"
+                            value="5"
+                            required
+                            aria-describedby="strength-error"
+                        >
+                        <span id="strength-error" class="error-message"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="magic">
+                            Magic
+                            <span id="magic-value" class="skill-value">5</span>
+                        </label>
+                        <input
+                            id="magic"
+                            name="magic"
+                            type="number"
+                            min="1"
+                            max="10"
+                            step="1"
+                            value="5"
+                            required
+                            aria-describedby="magic-error"
+                        >
+                        <span id="magic-error" class="error-message"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="agility">
+                            Agility
+                            <span id="agility-value" class="skill-value">5</span>
+                        </label>
+                        <input
+                            id="agility"
+                            name="agility"
+                            type="number"
+                            min="1"
+                            max="10"
+                            step="1"
+                            value="5"
+                            required
+                            aria-describedby="agility-error"
+                        >
+                        <span id="agility-error" class="error-message"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="wisdom">
+                            Wisdom
+                            <span id="wisdom-value" class="skill-value">5</span>
+                        </label>
+                        <input
+                            id="wisdom"
+                            name="wisdom"
+                            type="number"
+                            min="1"
+                            max="10"
+                            step="1"
+                            value="5"
+                            required
+                            aria-describedby="wisdom-error"
+                        >
+                        <span id="wisdom-error" class="error-message"></span>
+                    </div>
+                </div>
+
+                <p id="points-counter" class="status" aria-live="polite">
+                    Points used: 20 / 20. Points left: 0.
+                </p>
+
+                <div class="button-row">
+                    <button type="submit">Create character</button>
+                    <button type="reset" class="secondary">Reset form</button>
+                </div>
+            </form>
+
+            <section id="result-area" aria-live="polite" tabindex="-1"></section>
+        </section>
+
+        <aside class="character-preview">
+            <h2>Live preview</h2>
+
+            <div id="preview-avatar" class="avatar color-purple" aria-hidden="true">
+                ✦
+            </div>
+
+            <h3 id="preview-name">Your character</h3>
+            <p id="preview-class" class="muted">Choose a class</p>
+
+            <div class="skill-line">
+                <span>Strength</span>
+                <strong id="preview-strength">5</strong>
+            </div>
+
+            <div class="skill-line">
+                <span>Magic</span>
+                <strong id="preview-magic">5</strong>
+            </div>
+
+            <div class="skill-line">
+                <span>Agility</span>
+                <strong id="preview-agility">5</strong>
+            </div>
+
+            <div class="skill-line">
+                <span>Wisdom</span>
+                <strong id="preview-wisdom">5</strong>
+            </div>
+
+            <p id="preview-total"><strong>Total: 20 / 20</strong></p>
+        </aside>
+    </main>
+
+    <footer class="container footer">Character Creator · Task 3</footer>
+</body>
+</html>

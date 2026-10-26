@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Breaker | Task 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="task1.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <p class="eyebrow">TASK 1 · VARIABLES, OPERATORS AND CONDITIONS</p>
+            <h1>Code Breaker</h1>
+            <p>Find the secret four-digit code. Every digit is unique, and you have eight attempts.</p>
+            <nav class="top-nav">
+                <a href="index.html">← All tasks</a>
+                <a href="task2.html">Task 2 →</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container layout-two">
+        <section class="panel">
+            <h2>Enter your guess</h2>
+            <p class="muted">Type four different digits from 0 to 9. The first digit may be zero.</p>
+
+            <form id="guess-form">
+                <div class="field">
+                    <label for="guess">Your four-digit guess</label>
+                    <input
+                        id="guess"
+                        name="guess"
+                        type="text"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        maxlength="4"
+                        pattern="[0-9]{4}"
+                        aria-describedby="guess-help"
+                        required
+                    >
+                    <p id="guess-help" class="field-help">
+                        Example: 5072. Repeated digits are not allowed.
+                    </p>
+                </div>
+
+                <div class="button-row">
+                    <button id="guess-button" type="submit">Check guess</button>
+                    <button id="restart-button" class="secondary" type="button">New game</button>
+                </div>
+            </form>
+
+            <p id="message" class="status" role="status" aria-live="polite">
+                A new code is ready. Good luck!
+            </p>
+
+            <h3>Previous guesses</h3>
+            <ol id="guess-history">
+                <li class="muted">No guesses yet.</li>
+            </ol>
+        </section>
+
+        <aside class="panel">
+            <h2>Game status</h2>
+            <div class="code-display" aria-label="Secret code hidden">
+                <span class="digit">?</span>
+                <span class="digit">?</span>
+                <span class="digit">?</span>
+                <span class="digit">?</span>
+            </div>
+
+            <p>Attempts left: <strong id="attempts-left">8</strong></p>
+            <p>Wins: <strong id="wins">0</strong></p>
+            <p>Losses: <strong id="losses">0</strong></p>
+
+            <p class="muted">
+                Correct place means the digit and its position are right.
+                Wrong place means the digit exists in the code but is in another position.
+            </p>
+        </aside>
+    </main>
+
+    <footer class="container footer">Code Breaker · Task 1</footer>
+</body>
+</html>
